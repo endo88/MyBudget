@@ -1,0 +1,62 @@
+﻿@model HomeViewModel
+
+<h3>Bank accounts</h3>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Bank name</th>
+            <th>Balance</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var account in Model.Accounts)
+        {
+            <tr>
+                <td>@account.BankName</td>
+                <td>@account.Balance</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3>Incomes</h3>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Income type</th>
+            <th>Amount</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var income in Model.Incomes)
+        {
+            <tr>
+                <td>@income.Type</td>
+                <td>@income.Amount</td>
+                <td>@income.Date</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3>Expenses</h3>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Expense type</th>
+            <th>Amount</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var expense in Model.Expenses)
+        {
+            <tr>
+                <td>@expense.Type</td>
+                <td>@expense.Amount</td>
+                <td>@expense.Date</td>
+            </tr>
+        }
+    </tbody>
+</table>
