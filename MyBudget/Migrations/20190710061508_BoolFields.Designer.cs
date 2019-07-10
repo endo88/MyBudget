@@ -10,7 +10,7 @@ using MyBudget.Models.DatabaseContexts;
 namespace MyBudget.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190709120650_BoolFields")]
+    [Migration("20190710061508_BoolFields")]
     partial class BoolFields
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,6 +49,8 @@ namespace MyBudget.Migrations
                     b.Property<decimal>("Amount");
 
                     b.Property<DateTime>("Date");
+
+                    b.Property<bool>("Paid");
 
                     b.Property<string>("Type");
 

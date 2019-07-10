@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBudget", "MyBudget\MyBudget.csproj", "{B7142DC2-A76A-46D3-91B9-BD6BBB1C3AED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBudget", "MyBudget\MyBudget.csproj", "{B7142DC2-A76A-46D3-91B9-BD6BBB1C3AED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -13,6 +13,12 @@ namespace MyBudget.Migrations
                 defaultValue: false);
 
             migrationBuilder.AddColumn<bool>(
+                name: "Paid",
+                table: "Expenses",
+                nullable: false,
+                defaultValue: false);
+
+            migrationBuilder.AddColumn<bool>(
                 name: "Active",
                 table: "BankAccounts",
                 nullable: false,
@@ -24,6 +30,10 @@ namespace MyBudget.Migrations
             migrationBuilder.DropColumn(
                 name: "Received",
                 table: "Incomes");
+
+            migrationBuilder.DropColumn(
+                name: "Paid",
+                table: "Expenses");
 
             migrationBuilder.DropColumn(
                 name: "Active",

@@ -48,6 +48,8 @@ namespace MyBudget.Migrations
 
                     b.Property<DateTime>("Date");
 
+                    b.Property<bool>("Paid");
+
                     b.Property<string>("Type");
 
                     b.HasKey("ExpenseID");

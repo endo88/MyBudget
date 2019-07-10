@@ -37,11 +37,12 @@ namespace MyBudget
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            SeedData.EnsurePopulated(app);
             app.UseDeveloperExceptionPage();
+            app.UseStaticFiles();
 
             app.UseMvcWithDefaultRoute();
 
-            SeedData.EnsurePopulated(app);
         }
     }
 }

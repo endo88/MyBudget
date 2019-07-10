@@ -1,11 +1,15 @@
 ﻿@model HomeViewModel
 
-<h3>Bank accounts</h3>
-<table border="1">
-    <thead>
+<h2>Left to spend: @Model.CalculateLeftToSpend().ToString("c")</h2>
+<h3 class="text-center bg-info">Bank accounts</h3>
+<table class="table table-bordered table-striped table-sm">
+    <thead class="thead-dark">
         <tr>
             <th>Bank name</th>
             <th>Balance</th>
+            <th>Debit Limit</th>
+            <th>Active</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -13,19 +17,31 @@
         {
             <tr>
                 <td>@account.BankName</td>
-                <td>@account.Balance</td>
+                <td>@account.Balance.ToString("c")</td>
+                <td>@account.DebitLimit.ToString("c")</td>
+                <td>@account.Active</td>
+                <td>
+                    <a asp-action="EditBankAccount" asp-route-BankAccountID="@account.BankAccountID" class="btn btn-sm btn-secondary">
+                        Edit
+                    </a>
+                </td>
             </tr>
         }
+    <tr>
+        <td class="text-info">Total balance:</td>
+        <td>@Model.CalculateTotalBalance().ToString("c")</td>
+    </tr>
     </tbody>
 </table>
 
-<h3>Incomes</h3>
-<table border="1">
-    <thead>
+<h3 class="text-center bg-info">Incomes</h3>
+<table class="table table-bordered table-striped table-sm">
+    <thead class="thead-dark">
         <tr>
             <th>Income type</th>
             <th>Amount</th>
             <th>Date</th>
+            <th>Received</th>
         </tr>
     </thead>
     <tbody>
@@ -33,20 +49,27 @@
         {
             <tr>
                 <td>@income.Type</td>
-                <td>@income.Amount</td>
-                <td>@income.Date</td>
+                <td>@income.Amount.ToString("c")</td>
+                <td>@income.Date.ToString("dd-MM-yyyy")</td>
+                <td>@income.Received</td>
             </tr>
         }
+    <tr>
+        <td class="text-info">Left to receive:</td>
+        <td>@Model.CalculateLeftToReceive().ToString("c")</td>
+        <td colspan="2"></td>
+    </tr>
     </tbody>
 </table>
 
-<h3>Expenses</h3>
-<table border="1">
-    <thead>
+<h3 class="text-center bg-info">Expenses</h3>
+<table class="table table-bordered table-striped table-sm">
+    <thead class="thead-dark">
         <tr>
             <th>Expense type</th>
             <th>Amount</th>
             <th>Date</th>
+            <th>Paid</th>
         </tr>
     </thead>
     <tbody>
@@ -54,9 +77,15 @@
         {
             <tr>
                 <td>@expense.Type</td>
-                <td>@expense.Amount</td>
-                <td>@expense.Date</td>
+                <td>@expense.Amount.ToString("c")</td>
+                <td>@expense.Date.ToString("dd-MM-yyyy")</td>
+                <td>@expense.Paid</td>
             </tr>
         }
+    <tr>
+        <td class="text-info">Left to pay:</td>
+        <td>@Model.CalculateLeftToPay().ToString("c")</td>
+        <td colspan="2"></td>
+    </tr>
     </tbody>
 </table>

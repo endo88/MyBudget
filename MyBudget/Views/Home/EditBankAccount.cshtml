@@ -1,0 +1,26 @@
+﻿@model BankAccount
+
+<form asp-action="EditBankAccount" method="post">
+    <input type="hidden" asp-for="BankAccountID"/>
+    <div class="form-group">
+        <label asp-for="BankName"></label>
+        <input asp-for="BankName" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label asp-for="Balance"></label>
+        <input asp-for="Balance" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label asp-for="DebitLimit"></label>
+        <div><span asp-validation-for="DebitLimit" class="text-danger"></span></div>
+        <input asp-for="DebitLimit" class="form-control"/>
+    </div>
+    <div class="form-check">
+        <label asp-for="Active" class="form-check-label"></label>
+        <input asp-for="Active" class="form-check"/>
+    </div>
+    <div class="text-center">
+        <button class="btn btn-primary" type="submit">Save</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
