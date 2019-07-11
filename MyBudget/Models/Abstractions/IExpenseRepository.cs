@@ -9,5 +9,9 @@ namespace MyBudget.Models.Abstractions
     public interface IExpenseRepository
     {
         IQueryable<Expense> Expenses { get; }
+
+        void Save(Expense expense);
+
+        Expense Delete(int expenseId);
     }
 }

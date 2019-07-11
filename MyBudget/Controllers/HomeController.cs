@@ -95,5 +95,35 @@ namespace MyBudget.Controllers
         {
             return View("EditIncome", new Income{Date = DateTime.Today});
         }
+
+
+        public ViewResult EditExpense(int expenseID)
+        {
+            return View(_expenseRepository.Expenses.FirstOrDefault(i => i.ExpenseID == expenseID));
+        }
+
+        [HttpPost]
+        public IActionResult EditExpense(Expense expense)
+        {
+            if (ModelState.IsValid)
+            {
+                _expenseRepository.Save(expense);
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(expense);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteExpense(int expenseId)
+        {
+            _expenseRepository.Delete(expenseId);
+            return RedirectToAction(nameof(Index));
+        }
+
+        public ViewResult AddExpense()
+        {
+            return View("EditExpense", new Expense { Date = DateTime.Today });
+        }
     }
 }
