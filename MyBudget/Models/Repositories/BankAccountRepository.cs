@@ -18,7 +18,7 @@ namespace MyBudget.Models.Repositories
 
         public IQueryable<BankAccount> Accounts => _context.BankAccounts;
 
-        public void SaveBankAccount(BankAccount account)
+        public void Save(BankAccount account)
         {
             if (account.BankAccountID == 0)
             {
@@ -39,6 +39,20 @@ namespace MyBudget.Models.Repositories
             }
 
             _context.SaveChanges();
+        }
+
+        public BankAccount Delete(int bankAccountID)
+        {
+            BankAccount dbEntry =
+                _context.BankAccounts
+                    .FirstOrDefault(a => a.BankAccountID == bankAccountID);
+            if (dbEntry != null)
+            {
+                _context.BankAccounts.Remove(dbEntry);
+                _context.SaveChanges();
+            }
+
+            return dbEntry;
         }
     }
 }

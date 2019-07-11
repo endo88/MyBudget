@@ -6,6 +6,8 @@ namespace MyBudget.Models.Abstractions
     {
         IQueryable<BankAccount> Accounts { get; }
 
-        void SaveBankAccount(BankAccount account);
+        void Save(BankAccount account);
+
+        BankAccount Delete(int bankAccountID);
     }
 }

@@ -40,12 +40,17 @@ namespace MyBudget.Controllers
             return View(_accountRepository.Accounts.FirstOrDefault(a => a.BankAccountID == BankAccountID));
         }
 
+        public ViewResult AddBankAccount()
+        {
+            return View("EditBankAccount", new BankAccount());
+        }
+
         [HttpPost]
         public IActionResult EditBankAccount(BankAccount account)
         {
             if (ModelState.IsValid)
             {
-                _accountRepository.SaveBankAccount(account);
+                _accountRepository.Save(account);
                 return RedirectToAction(nameof(Index));
             }
             else
@@ -53,6 +58,42 @@ namespace MyBudget.Controllers
                 return View(account);
             }
 
+        }
+
+        [HttpPost]
+        public IActionResult DeleteBankAccount(int bankAccountID)
+        {
+            _accountRepository.Delete(bankAccountID);
+            return RedirectToAction("Index");
+        }
+
+        public ViewResult EditIncome(int incomeID)
+        {
+            return View(_incomeRepository.Incomes.FirstOrDefault(i => i.IncomeID == incomeID));
+        }
+
+        [HttpPost]
+        public IActionResult EditIncome(Income income)
+        {
+            if (ModelState.IsValid)
+            {
+                _incomeRepository.Save(income);
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(income);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteIncome(int incomeId)
+        {
+            _incomeRepository.Delete(incomeId);
+            return RedirectToAction(nameof(Index));
+        }
+
+        public ViewResult AddIncome()
+        {
+            return View("EditIncome", new Income{Date = DateTime.Today});
         }
     }
 }

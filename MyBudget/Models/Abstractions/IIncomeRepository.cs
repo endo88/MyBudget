@@ -8,5 +8,9 @@ namespace MyBudget.Models.Abstractions
     public interface IIncomeRepository
     {
         IQueryable<Income> Incomes { get; }
+
+        void Save(Income income);
+
+        Income Delete(int incomeID);
     }
 }

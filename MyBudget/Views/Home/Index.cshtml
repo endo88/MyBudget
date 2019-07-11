@@ -20,16 +20,24 @@
                 <td>@account.Balance.ToString("c")</td>
                 <td>@account.DebitLimit.ToString("c")</td>
                 <td>@account.Active</td>
-                <td>
+                <td class="text-center">
+                    <form asp-action="DeleteBankAccount" method="post">
                     <a asp-action="EditBankAccount" asp-route-BankAccountID="@account.BankAccountID" class="btn btn-sm btn-secondary">
                         Edit
                     </a>
+                        <input type="hidden" name="bankAccountID" value="@account.BankAccountID"/>
+                        <button class="btn btn-sm btn-secondary" type="submit">Delete</button>
+                    </form>
                 </td>
             </tr>
         }
     <tr>
         <td class="text-info">Total balance:</td>
         <td>@Model.CalculateTotalBalance().ToString("c")</td>
+        <td colspan="2"></td>
+        <td class="text-center">
+            <a asp-action="AddBankAccount" class="btn btn-sm btn-secondary">Add</a>
+        </td>
     </tr>
     </tbody>
 </table>
@@ -42,6 +50,7 @@
             <th>Amount</th>
             <th>Date</th>
             <th>Received</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -52,12 +61,18 @@
                 <td>@income.Amount.ToString("c")</td>
                 <td>@income.Date.ToString("dd-MM-yyyy")</td>
                 <td>@income.Received</td>
+                <td><form asp-action="DeleteIncome" method="post" class="text-center">
+                    <a asp-action="EditIncome" asp-route-incomeID="@income.IncomeID" class="btn btn-sm btn-secondary">Edit</a>
+                    <button type="submit" class="btn btn-sm btn-secondary">Delete</button>
+                    <input type="hidden" name="incomeID" value="@income.IncomeID"/>
+                </form></td>
             </tr>
         }
     <tr>
         <td class="text-info">Left to receive:</td>
         <td>@Model.CalculateLeftToReceive().ToString("c")</td>
         <td colspan="2"></td>
+        <td class="text-center"><a asp-action="AddIncome" class="btn btn-sm btn-secondary">Add</a></td>
     </tr>
     </tbody>
 </table>

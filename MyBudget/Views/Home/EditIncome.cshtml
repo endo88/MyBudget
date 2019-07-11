@@ -1,0 +1,17 @@
+﻿@model Income
+
+<form asp-action="EditIncome" method="post">
+    <input type="hidden" asp-for="IncomeID" />
+    <label asp-for="Type"></label>
+    <input asp-for="Type" class="form-control" />
+    <label asp-for="Amount"></label>
+    <input asp-for="Amount" class="form-control" />
+    <label asp-for="Date"></label>
+    <Select asp-for="Date" class="form-control"><option disabled selected>@Model.Date.ToString("d")</option></Select>
+    <label asp-for="Received"></label>
+    <input asp-for="Received" class="form-check">
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
