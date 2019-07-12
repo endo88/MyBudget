@@ -1,0 +1,42 @@
+﻿@model BankAccountViewModel
+
+<h3 class="text-center bg-info">Bank accounts</h3>
+<table class="table table-bordered table-striped table-sm">
+    <thead class="thead-dark">
+    <tr>
+        <th>Bank name</th>
+        <th>Balance</th>
+        <th>Debit Limit</th>
+        <th>Active</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var account in Model.Accounts)
+    {
+        <tr>
+            <td>@account.BankName</td>
+            <td>@account.Balance.ToString("c")</td>
+            <td>@account.DebitLimit.ToString("c")</td>
+            <td>@account.Active</td>
+            <td class="text-center">
+                <form asp-action="Delete" method="post">
+                    <a asp-action="Edit" asp-route-BankAccountID="@account.BankAccountID" class="btn btn-sm btn-secondary">
+                        Edit
+                    </a>
+                    <input type="hidden" name="bankAccountID" value="@account.BankAccountID"/>
+                    <button class="btn btn-sm btn-secondary" type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+    }
+    <tr>
+        <td class="text-info">Total balance:</td>
+        <td>@Model.CalculateTotalBalance().ToString("c")</td>
+        <td colspan="2"></td>
+        <td class="text-center">
+            <a asp-action="Add" class="btn btn-sm btn-secondary">Add</a>
+        </td>
+    </tr>
+    </tbody>
+</table>

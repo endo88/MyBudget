@@ -14,6 +14,7 @@ namespace MyBudget.Models
         [Range(0,int.MaxValue, ErrorMessage = "Amount needs to be positive")]
         public decimal Amount { get; set; }
         [Required(ErrorMessage = "Please provide date of income")]
+        [DataType(DataType.Date)]
         public DateTime Date { get; set; }
 
         [Required(ErrorMessage = "Please specify if the income was already received")]

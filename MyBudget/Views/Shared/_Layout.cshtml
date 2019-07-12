@@ -9,8 +9,20 @@
     <title>MyBudget</title>
 </head>
 <body>
-<div>
-    @RenderBody()
+<div class="navbar navbar-dark bg-dark" role="navigation">
+    <a class="col navbar-brand text-center" href="/Home/Index">MyBudget</a>
+</div>
+<div class="row m-1 p-1">
+    <div id="categories" class="col-3">
+        <div>
+            <a asp-controller="BankAccount" asp-action="List" class="btn btn-block btn-info">Bank Accounts</a>
+            <a asp-controller="Income" asp-action="List" class="btn btn-block btn-info">Incomes</a>
+            <a asp-controller="Expense" asp-action="List" class="btn btn-block btn-info">Expenses</a>
+        </div>
+    </div>
+    <div class="col-9">
+        @RenderBody()
+    </div>
 </div>
 </body>
 </html>

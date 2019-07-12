@@ -1,106 +1,27 @@
 ﻿@model HomeViewModel
 
-<h2>Left to spend: @Model.CalculateLeftToSpend().ToString("c")</h2>
-<h3 class="text-center bg-info">Bank accounts</h3>
-<table class="table table-bordered table-striped table-sm">
-    <thead class="thead-dark">
-        <tr>
-            <th>Bank name</th>
-            <th>Balance</th>
-            <th>Debit Limit</th>
-            <th>Active</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var account in Model.Accounts)
-        {
-            <tr>
-                <td>@account.BankName</td>
-                <td>@account.Balance.ToString("c")</td>
-                <td>@account.DebitLimit.ToString("c")</td>
-                <td>@account.Active</td>
-                <td class="text-center">
-                    <form asp-action="DeleteBankAccount" method="post">
-                    <a asp-action="EditBankAccount" asp-route-BankAccountID="@account.BankAccountID" class="btn btn-sm btn-secondary">
-                        Edit
-                    </a>
-                        <input type="hidden" name="bankAccountID" value="@account.BankAccountID"/>
-                        <button class="btn btn-sm btn-secondary" type="submit">Delete</button>
-                    </form>
-                </td>
-            </tr>
-        }
+
+<table class="table table-primary">
+    <thead class="text-center">
     <tr>
-        <td class="text-info">Total balance:</td>
-        <td>@Model.CalculateTotalBalance().ToString("c")</td>
-        <td colspan="2"></td>
-        <td class="text-center">
-            <a asp-action="AddBankAccount" class="btn btn-sm btn-secondary">Add</a>
+        <th>Left to pay:</th>
+        <th>Left to receive:</th>
+        <th>Left to spend:</th>
+    </tr>
+    </thead>
+    <tbody class="text-center">
+    <tr>
+        <td>
+            @Model.CalculateLeftToPay().ToString("c")
+        </td>
+        <td>
+            @Model.CalculateLeftToReceive().ToString("c")
+        </td>
+        <td>
+            @Model.CalculateLeftToSpend().ToString("c")
         </td>
     </tr>
     </tbody>
 </table>
-
-<h3 class="text-center bg-info">Incomes</h3>
-<table class="table table-bordered table-striped table-sm">
-    <thead class="thead-dark">
-        <tr>
-            <th>Income type</th>
-            <th>Amount</th>
-            <th>Date</th>
-            <th>Received</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var income in Model.Incomes)
-        {
-            <tr>
-                <td>@income.Type</td>
-                <td>@income.Amount.ToString("c")</td>
-                <td>@income.Date.ToString("dd-MM-yyyy")</td>
-                <td>@income.Received</td>
-                <td><form asp-action="DeleteIncome" method="post" class="text-center">
-                    <a asp-action="EditIncome" asp-route-incomeID="@income.IncomeID" class="btn btn-sm btn-secondary">Edit</a>
-                    <button type="submit" class="btn btn-sm btn-secondary">Delete</button>
-                    <input type="hidden" name="incomeID" value="@income.IncomeID"/>
-                </form></td>
-            </tr>
-        }
-    <tr>
-        <td class="text-info">Left to receive:</td>
-        <td>@Model.CalculateLeftToReceive().ToString("c")</td>
-        <td colspan="2"></td>
-        <td class="text-center"><a asp-action="AddIncome" class="btn btn-sm btn-secondary">Add</a></td>
-    </tr>
-    </tbody>
-</table>
-
-<h3 class="text-center bg-info">Expenses</h3>
-<table class="table table-bordered table-striped table-sm">
-    <thead class="thead-dark">
-        <tr>
-            <th>Expense type</th>
-            <th>Amount</th>
-            <th>Date</th>
-            <th>Paid</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var expense in Model.Expenses)
-        {
-            <tr>
-                <td>@expense.Type</td>
-                <td>@expense.Amount.ToString("c")</td>
-                <td>@expense.Date.ToString("dd-MM-yyyy")</td>
-                <td>@expense.Paid</td>
-            </tr>
-        }
-    <tr>
-        <td class="text-info">Left to pay:</td>
-        <td>@Model.CalculateLeftToPay().ToString("c")</td>
-        <td colspan="2"></td>
-    </tr>
-    </tbody>
-</table>
+<div class="text-center">
+</div>

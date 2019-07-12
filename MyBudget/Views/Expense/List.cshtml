@@ -1,0 +1,38 @@
+﻿@model ExpenseViewModel
+
+<h3 class="text-center bg-info">Expenses</h3>
+<table class="table table-bordered table-striped table-sm">
+    <thead class="thead-dark">
+    <tr>
+        <th>Expense type</th>
+        <th>Amount</th>
+        <th>Date</th>
+        <th>Paid</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var expense in Model.Expenses)
+    {
+        <tr>
+            <td>@expense.Type</td>
+            <td>@expense.Amount.ToString("c")</td>
+            <td>@expense.Date.ToString("dd-MM-yyyy")</td>
+            <td>@expense.Paid</td>
+            <td class="text-center">
+                <form asp-action="Delete" method="post">
+                    <a asp-action="Edit" asp-route-expenseID="@expense.ExpenseID" class="btn btn-sm btn-secondary">Edit</a>
+                    <button type="submit" class="btn btn-sm btn-secondary">Delete</button>
+                    <input type="hidden" name="expenseID" value="@expense.ExpenseID"/>
+                </form>
+            </td>
+        </tr>
+    }
+    <tr>
+        <td class="text-info">Left to pay:</td>
+        <td>@Model.CalculateLeftToPay().ToString("c")</td>
+        <td colspan="2"></td>
+        <td class="text-center"><a asp-action="Add" class="btn btn-sm btn-secondary">Add</a></td>
+    </tr>
+    </tbody>
+</table>

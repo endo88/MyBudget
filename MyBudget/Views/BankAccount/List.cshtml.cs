@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace MyBudget.Views.Home
+namespace MyBudget.Views.BankAccount
 {
-    public class EditExpenseModel : PageModel
+    public class ListModel : PageModel
     {
         public void OnGet()
         {

@@ -1,0 +1,36 @@
+﻿@model IncomeViewModel
+
+<h3 class="text-center bg-info">Incomes</h3>
+<table class="table table-bordered table-striped table-sm">
+    <thead class="thead-dark">
+    <tr>
+        <th>Income type</th>
+        <th>Amount</th>
+        <th>Date</th>
+        <th>Received</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var income in Model.Incomes)
+    {
+        <tr>
+            <td>@income.Type</td>
+            <td>@income.Amount.ToString("c")</td>
+            <td>@income.Date.ToString("dd-MM-yyyy")</td>
+            <td>@income.Received</td>
+            <td class="text-center"><form asp-action="Delete" method="post" >
+                <a asp-action="Edit" asp-route-incomeID="@income.IncomeID" class="btn btn-sm btn-secondary">Edit</a>
+                <button type="submit" class="btn btn-sm btn-secondary">Delete</button>
+                <input type="hidden" name="incomeID" value="@income.IncomeID"/>
+            </form></td>
+        </tr>
+    }
+    <tr>
+        <td class="text-info">Left to receive:</td>
+        <td>@Model.CalculateLeftToReceive().ToString("c")</td>
+        <td colspan="2"></td>
+        <td class="text-center"><a asp-action="Add" class="btn btn-sm btn-secondary">Add</a></td>
+    </tr>
+    </tbody>
+</table>

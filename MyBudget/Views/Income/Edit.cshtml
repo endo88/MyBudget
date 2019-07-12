@@ -1,0 +1,29 @@
+﻿@model Income
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="IncomeID" />
+    <label asp-for="Type"></label>
+    <div>
+        <span asp-validation-for="Type" class="text-danger"></span>
+    </div>
+    <input asp-for="Type" class="form-control" />
+    <label asp-for="Amount"></label>
+    <div>
+        <span asp-validation-for="Amount" class="text-danger"></span>
+    </div>
+    <input asp-for="Amount" class="form-control" />
+    <label asp-for="Date"></label>
+    <div>
+        <span asp-validation-for="Date" class="text-danger"></span>
+    </div>
+    <input asp-for="Date" class="form-control"/>
+    <label asp-for="Received"></label>
+    <div>
+        <span asp-validation-for="Received" class="text-danger"></span>
+    </div>
+    <input asp-for="Received" class="form-check">
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a asp-action="List" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
