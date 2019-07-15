@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using MyBudget.Models.Abstractions;
 using MyBudget.Models.DatabaseContexts;
@@ -49,6 +50,20 @@ namespace MyBudget.Models.Repositories
             if (dbEntry != null)
             {
                 _context.Incomes.Remove(dbEntry);
+                _context.SaveChanges();
+            }
+
+            return dbEntry;
+        }
+
+        public Income MarkAsReceived(int incomeId)
+        {
+            Income dbEntry = _context.Incomes
+                .FirstOrDefault(i => i.IncomeID == incomeId);
+
+            if (dbEntry != null)
+            {
+                dbEntry.Received = !dbEntry.Received;
                 _context.SaveChanges();
             }
 

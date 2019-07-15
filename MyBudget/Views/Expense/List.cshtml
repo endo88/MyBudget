@@ -18,12 +18,17 @@
             <td>@expense.Type</td>
             <td>@expense.Amount.ToString("c")</td>
             <td>@expense.Date.ToString("dd-MM-yyyy")</td>
-            <td>@expense.Paid</td>
+            <td class="text-center">                
+                <form asp-action="MarkAsPaid" method="post">
+                    <input type="hidden" name="expenseID" value="@expense.ExpenseID" />
+                    <button type="submit" class="btn btn-sm @(expense.Paid ? "btn-outline-success" : "btn-outline-danger")">@expense.Paid</button>
+                </form>
+                </td>
             <td class="text-center">
                 <form asp-action="Delete" method="post">
                     <a asp-action="Edit" asp-route-expenseID="@expense.ExpenseID" class="btn btn-sm btn-secondary">Edit</a>
                     <button type="submit" class="btn btn-sm btn-secondary">Delete</button>
-                    <input type="hidden" name="expenseID" value="@expense.ExpenseID"/>
+                    <input type="hidden" name="expenseID" value="@expense.ExpenseID" />
                 </form>
             </td>
         </tr>

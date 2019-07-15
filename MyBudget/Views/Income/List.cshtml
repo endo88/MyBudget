@@ -18,7 +18,12 @@
             <td>@income.Type</td>
             <td>@income.Amount.ToString("c")</td>
             <td>@income.Date.ToString("dd-MM-yyyy")</td>
-            <td>@income.Received</td>
+            <td class="text-center">                
+                <form asp-action="MarkAsReceived" method="post">
+                    <input type="hidden" name="incomeID" value="@income.IncomeID" />
+                    <button type="submit" class="btn btn-sm @(income.Received ? "btn-outline-success" : "btn-outline-danger")">@income.Received</button>
+                </form>
+            </td>
             <td class="text-center"><form asp-action="Delete" method="post" >
                 <a asp-action="Edit" asp-route-incomeID="@income.IncomeID" class="btn btn-sm btn-secondary">Edit</a>
                 <button type="submit" class="btn btn-sm btn-secondary">Delete</button>

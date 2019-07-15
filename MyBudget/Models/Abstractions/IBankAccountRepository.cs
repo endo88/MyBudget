@@ -9,5 +9,7 @@ namespace MyBudget.Models.Abstractions
         void Save(BankAccount account);
 
         BankAccount Delete(int bankAccountID);
+
+        BankAccount MarkAsActive(int bankAccountID);
     }
 }

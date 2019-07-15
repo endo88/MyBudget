@@ -18,7 +18,12 @@
             <td>@account.BankName</td>
             <td>@account.Balance.ToString("c")</td>
             <td>@account.DebitLimit.ToString("c")</td>
-            <td>@account.Active</td>
+            <td class="text-center">                
+                <form asp-action="MarkAsActive" method="post">
+                    <input type="hidden" name="bankAccountID" value="@account.BankAccountID" />
+                    <button type="submit" class="btn btn-sm @(account.Active ? "btn-outline-success" : "btn-outline-danger")">@account.Active</button>
+                </form>
+            </td>
             <td class="text-center">
                 <form asp-action="Delete" method="post">
                     <a asp-action="Edit" asp-route-BankAccountID="@account.BankAccountID" class="btn btn-sm btn-secondary">

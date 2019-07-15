@@ -54,5 +54,19 @@ namespace MyBudget.Models.Repositories
 
             return dbEntry;
         }
+
+        public BankAccount MarkAsActive(int bankAccountID)
+        {
+            BankAccount dbEntry = _context.BankAccounts
+                .FirstOrDefault(a => a.BankAccountID == bankAccountID);
+
+            if (dbEntry != null)
+            {
+                dbEntry.Active = !dbEntry.Active;
+                _context.SaveChanges();
+            }
+
+            return dbEntry;
+        }
     }
 }

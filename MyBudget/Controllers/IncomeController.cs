@@ -57,5 +57,12 @@ namespace MyBudget.Controllers
             return View("Edit", new Income { Date = DateTime.Today });
         }
 
+        [HttpPost]
+        public IActionResult MarkAsReceived(int incomeId)
+        {
+            _repository.MarkAsReceived(incomeId);
+            return RedirectToAction(nameof(List));
+        }
+
     }
 }

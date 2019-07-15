@@ -59,5 +59,12 @@ namespace MyBudget.Controllers
             _repository.Delete(bankAccountID);
             return RedirectToAction("List");
         }
+
+        [HttpPost]
+        public IActionResult MarkAsActive(int bankAccountID)
+        {
+            _repository.MarkAsActive(bankAccountID);
+            return RedirectToAction(nameof(List));
+        }
     }
 }

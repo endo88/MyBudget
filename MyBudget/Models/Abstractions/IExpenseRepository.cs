@@ -13,5 +13,7 @@ namespace MyBudget.Models.Abstractions
         void Save(Expense expense);
 
         Expense Delete(int expenseId);
+
+        Expense MarkAsPaid(int expenseId);
     }
 }

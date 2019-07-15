@@ -12,5 +12,7 @@ namespace MyBudget.Models.Abstractions
         void Save(Income income);
 
         Income Delete(int incomeID);
+
+        Income MarkAsReceived(int incomeId);
     }
 }

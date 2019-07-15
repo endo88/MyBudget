@@ -56,5 +56,12 @@ namespace MyBudget.Controllers
         {
             return View("Edit", new Expense { Date = DateTime.Today });
         }
+
+        [HttpPost]
+        public IActionResult MarkAsPaid(int expenseId)
+        {
+            _repository.MarkAsPaid(expenseId);
+            return RedirectToAction(nameof(List));
+        }
     }
 }

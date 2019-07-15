@@ -54,5 +54,19 @@ namespace MyBudget.Models.Repositories
 
             return dbEntry;
         }
+
+        public Expense MarkAsPaid(int expenseId)
+        {
+            Expense dbEntry = _context.Expenses
+                .FirstOrDefault(e => e.ExpenseID == expenseId);
+
+            if (dbEntry != null)
+            {
+                dbEntry.Paid = !dbEntry.Paid;
+                _context.SaveChanges();
+            }
+
+            return dbEntry;
+        }
     }
 }
