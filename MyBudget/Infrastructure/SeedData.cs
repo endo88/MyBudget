@@ -100,6 +100,7 @@ namespace MyBudget.Infrastructure
                     {
                         Type = "Housing",
                         Amount = 500,
+                        Description = "Mortgage",
                         Date = new DateTime(2019,3,1),
                         Paid = true
                     },
@@ -107,6 +108,7 @@ namespace MyBudget.Infrastructure
                     {
                         Type = "Tv",
                         Amount = 100,
+                        Description = "Satellite",
                         Date = new DateTime(2019, 3, 1),
                         Paid = true
                     },
@@ -114,6 +116,7 @@ namespace MyBudget.Infrastructure
                     {
                         Type = "Petrol",
                         Amount = 1000,
+                        Description = "Car",
                         Date = new DateTime(2019, 3, 1),
                         Paid = true
                     },
@@ -121,6 +124,7 @@ namespace MyBudget.Infrastructure
                     {
                         Type = "Housing",
                         Amount = 700,
+                        Description = "Mortgage",
                         Date = new DateTime(2019, 4, 1),
                         Paid = true
                     },
@@ -128,6 +132,7 @@ namespace MyBudget.Infrastructure
                     {
                         Type = "Tv",
                         Amount = 200,
+                        Description = "Satellite",
                         Date = new DateTime(2019, 4, 1),
                         Paid = true
                     },
@@ -135,6 +140,7 @@ namespace MyBudget.Infrastructure
                     {
                         Type = "Petrol",
                         Amount = 900,
+                        Description = "Car",
                         Date = new DateTime(2019, 4, 1),
                         Paid = true
                     },
@@ -142,6 +148,7 @@ namespace MyBudget.Infrastructure
                     {
                         Type = "Housing",
                         Amount = 570,
+                        Description = "Mortgage",
                         Date = new DateTime(2019, 8, 1),
                         Paid = false
                     },
@@ -149,6 +156,7 @@ namespace MyBudget.Infrastructure
                     {
                         Type = "Tv",
                         Amount = 149,
+                        Description = "Satellite",
                         Date = new DateTime(2019, 8, 1),
                         Paid = false
                     },
@@ -156,6 +164,7 @@ namespace MyBudget.Infrastructure
                     {
                         Type = "Petrol",
                         Amount = 431,
+                        Description = "Car",
                         Date = new DateTime(2019, 8, 1),
                         Paid = false
                     });

@@ -35,6 +35,7 @@ namespace MyBudget.Models.Repositories
                     dbEntry.Amount = expense.Amount;
                     dbEntry.Date = expense.Date;
                     dbEntry.Paid = expense.Paid;
+                    dbEntry.Description = expense.Description;
                 }
             }
 

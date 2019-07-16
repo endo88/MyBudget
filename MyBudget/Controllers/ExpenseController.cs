@@ -21,12 +21,47 @@ namespace MyBudget.Controllers
             _repository = repository;
         }
 
-        public ViewResult List()
+        public ViewResult List(string sortOrder, string searchString)
         {
             ExpenseViewModel accounts = new ExpenseViewModel
             {
-                Expenses = _repository.Expenses.OrderByDescending(e => e.Date)
+                Expenses = _repository.Expenses
             };
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                accounts.Expenses = accounts.Expenses.Where(e => e.Description.Contains(searchString));
+            }
+
+            ViewBag.DateSortParam = string.IsNullOrEmpty(sortOrder) || !sortOrder.Contains("desc") ? "Date_desc" : "Date";
+            ViewBag.TypeSortParam = sortOrder == "Type" ? "Type_desc" : "Type";
+            ViewBag.AmountSortParam = sortOrder == "Amount" ? "Amount_desc" : "Amount";
+
+            switch (sortOrder)
+            {
+                case "Type":
+                    accounts.Expenses = accounts.Expenses.OrderBy(e => e.Type);
+                    break;
+                case "Type_desc":
+                    accounts.Expenses = accounts.Expenses.OrderByDescending(e => e.Type);
+                    break;
+                case "Amount":
+                    accounts.Expenses = accounts.Expenses.OrderBy(e => e.Amount);
+                    break;
+                case "Amount_desc":
+                    accounts.Expenses = accounts.Expenses.OrderByDescending(e => e.Amount);
+                    break;
+                case "Date":
+                    accounts.Expenses = accounts.Expenses.OrderBy(e => e.Date);
+                    break;
+                case "Date_desc":
+                    accounts.Expenses = accounts.Expenses.OrderByDescending(e => e.Date);
+                    break;
+                default:
+                    accounts.Expenses = accounts.Expenses.OrderBy(e => e.ExpenseID);
+                    break;
+            }
+
             return View(accounts);
         }
 

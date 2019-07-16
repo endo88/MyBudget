@@ -7,7 +7,7 @@ namespace MyBudget.Models.ViewModels
 {
     public class ExpenseViewModel
     {
-        public IEnumerable<Expense> Expenses { get; set; }
+        public IQueryable<Expense> Expenses { get; set; }
 
         public decimal CalculateLeftToPay() => Expenses.Where(e => !e.Paid).Sum(e => e.Amount);
     }
