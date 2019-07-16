@@ -9,9 +9,19 @@
     <title>MyBudget</title>
 </head>
 <body>
-<div class="navbar navbar-dark bg-dark" role="navigation">
-    <a class="col navbar-brand text-center" href="/Home/Index">MyBudget</a>
-</div>
+    <div class="navbar navbar-dark bg-dark" role="navigation">
+        <a class="col navbar-brand text-center" href="/Home/Index">MyBudget</a>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="text-info">Welcome @User.Identity.Name</div>
+            <a asp-controller="Account" asp-action="Logout" class="btn btn-sm btn-dark">Logout</a>
+        }
+        else
+        {
+            <div class="text-info">Welcome Guest</div>
+            <a asp-controller="Account" asp-action="Login" class="btn btn-sm btn-dark">Login</a>
+        }
+    </div>
 <div class="row m-1 p-1">
     <div id="categories" class="col-3">
         <div>

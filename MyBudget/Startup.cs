@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,8 +26,15 @@ namespace MyBudget
         }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options => 
+            services
+                .AddDbContext<ApplicationDbContext>(options => 
+                options.UseSqlServer(Configuration.GetConnectionString("LocalDb")))
+                .AddDbContext<ApplicationIdentityDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("LocalDb")));
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationIdentityDbContext>()
+                .AddDefaultTokenProviders();
 
             services.AddTransient<IBankAccountRepository, BankAccountRepository>();
             services.AddTransient<IExpenseRepository, ExpenseRepository>();
@@ -38,8 +46,12 @@ namespace MyBudget
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             SeedData.EnsurePopulated(app);
+            SeedIdentityData.EnsurePopulated(app);
             app.UseDeveloperExceptionPage();
             app.UseStaticFiles();
+            app.UseStatusCodePages();
+
+            app.UseAuthentication();
 
             app.UseMvcWithDefaultRoute();
 
