@@ -11,6 +11,8 @@ namespace MyBudget.Models
         [JsonProperty(PropertyName = "Coin_Id")]
         public string CoinID { get; set; }
         public List<ExchangeDetail> Prices { get; set; }
+        [JsonProperty(PropertyName = "time_stamp")]
+        public DateTime Date { get; set; }
     }
 
     public class ExchangeDetail

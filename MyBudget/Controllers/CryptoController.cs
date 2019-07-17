@@ -11,13 +11,12 @@ namespace MyBudget.Controllers
 {
     public class CryptoController : Controller
     {
-        private List<CryptoCurrency> currencies;
+        private readonly List<CryptoCurrency> currencies = new List<CryptoCurrency>();
 
-        private List<string> coinIDs;
+        private readonly List<string> coinIDs;
 
         public CryptoController()
         {
-            currencies = new List<CryptoCurrency>();
             coinIDs = new List<string>
             {
                 "btc",

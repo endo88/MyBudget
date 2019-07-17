@@ -15,5 +15,7 @@ namespace MyBudget.Models.DatabaseContexts
         public DbSet<Expense> Expenses { get; set; }
 
         public DbSet<Income> Incomes { get; set; }
+
+        //public DbSet<CryptoCurrency> CryptoCurrencies { get; set; }
     }
 }
