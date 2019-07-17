@@ -1,0 +1,24 @@
+﻿@model IEnumerable<CryptoCurrency>
+
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th>Currency</th>
+        <th>Reference</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var line in @Model)
+    {
+        @foreach (var line2 in line.Prices)
+         {
+             <tr>
+                 <td>@line.CoinID</td>
+                 <td>@line2.Name</td>
+                 <td>@line2.Price</td>
+             </tr>
+         }
+    }
+    </tbody>
+</table>

@@ -1,17 +1,11 @@
 ﻿@model ExpenseViewModel
 
-<h3 class="bg-info">
-    
-    <div class="row">
-        <div class="col-9 text-center">Expenses</div>
-        <div class="text-right">
-            <form asp-action="List" class="form-inline">
-                <input class="form-control" type="text" name="searchString"/>
-                <button type="submit" class="btn btn-sm btn-info">Search</button>
-            </form>
-        </div>
-    </div>
-</h3>
+<h3 class="bg-info text-center">Expenses</h3>
+<form asp-action="List" class="form-inline">
+    <input class="form-control" type="text" name="searchString"/>
+    <button type="submit" class="btn btn-sm btn-info">Search</button>
+</form>
+
 <table class="table table-bordered table-striped table-sm">
     <thead class="thead-dark">
     <tr>
